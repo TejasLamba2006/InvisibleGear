@@ -6,9 +6,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-/**
- * Quick toggle command for gear visibility
- */
 public class VanishGearCommand implements CommandExecutor {
 
     private final InvisibleGear plugin;

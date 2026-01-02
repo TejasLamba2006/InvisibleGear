@@ -13,9 +13,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Main command handler for InvisibleGear
- */
 public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
 
     private final InvisibleGear plugin;
@@ -27,7 +24,6 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
-            // Toggle for self if player
             if (sender instanceof Player player) {
                 handleToggle(player, null);
             } else {
@@ -79,9 +75,6 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
-    /**
-     * Toggle gear visibility
-     */
     private void handleToggle(Player sender, String targetName) {
         Player target = sender;
 
@@ -100,7 +93,6 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
 
         boolean nowHidden = plugin.getGearManager().toggleGear(target);
 
-        // Notify if toggling for another player
         if (!target.equals(sender)) {
             if (nowHidden) {
                 sender.sendMessage(plugin.getMessage("target-gear-hidden", "{player}", target.getName()));
@@ -112,9 +104,6 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
         }
     }
 
-    /**
-     * Hide gear
-     */
     private void handleHide(Player sender, String targetName) {
         Player target = sender;
 
@@ -148,9 +137,6 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
         }
     }
 
-    /**
-     * Show gear
-     */
     private void handleShow(Player sender, String targetName) {
         Player target = sender;
 
@@ -184,9 +170,6 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
         }
     }
 
-    /**
-     * Show status
-     */
     private void handleStatus(Player sender, String targetName) {
         Player target = sender;
 
@@ -208,9 +191,6 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
         }
     }
 
-    /**
-     * Reload configuration
-     */
     private void handleReload(CommandSender sender) {
         if (!sender.hasPermission("invisiblegear.admin")) {
             sender.sendMessage(plugin.getMessage("no-permission"));
@@ -221,9 +201,6 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
         sender.sendMessage(plugin.getMessage("reload"));
     }
 
-    /**
-     * Send help message
-     */
     private void sendHelp(CommandSender sender) {
         sender.sendMessage(plugin.colorize("&8&m----------&r &b&lInvisibleGear &8&m----------"));
         sender.sendMessage(plugin.colorize("&b/ig &8- &7Toggle your gear visibility"));

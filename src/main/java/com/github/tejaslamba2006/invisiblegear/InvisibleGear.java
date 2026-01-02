@@ -22,17 +22,13 @@ public class InvisibleGear extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        // Save default config
         saveDefaultConfig();
 
-        // Initialize MiniMessage
         miniMessage = MiniMessage.miniMessage();
 
-        // Initialize managers
         dataManager = new DataManager(this);
         gearManager = new GearManager(this);
 
-        // Register commands
         InvisibleGearCommand mainCommand = new InvisibleGearCommand(this);
         getCommand("invisiblegear").setExecutor(mainCommand);
         getCommand("invisiblegear").setTabCompleter(mainCommand);
@@ -40,10 +36,8 @@ public class InvisibleGear extends JavaPlugin {
         VanishGearCommand vanishCommand = new VanishGearCommand(this);
         getCommand("vanishgear").setExecutor(vanishCommand);
 
-        // Register listeners
         getServer().getPluginManager().registerEvents(new GearListener(this), this);
 
-        // Show advertisement
         if (getConfig().getBoolean("show-advertisement", true)) {
             PluginAdvertiser.showEnableMessage(this);
         }
@@ -53,12 +47,10 @@ public class InvisibleGear extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Save data
         if (dataManager != null) {
             dataManager.saveAll();
         }
 
-        // Clean up gear manager
         if (gearManager != null) {
             gearManager.showAllGear();
         }
@@ -66,47 +58,30 @@ public class InvisibleGear extends JavaPlugin {
         getLogger().info("InvisibleGear disabled!");
     }
 
-    /**
-     * Get plugin instance
-     */
     public static InvisibleGear getInstance() {
         return instance;
     }
 
-    /**
-     * Get gear manager
-     */
     public GearManager getGearManager() {
         return gearManager;
     }
 
-    /**
-     * Get data manager
-     */
     public DataManager getDataManager() {
         return dataManager;
     }
 
-    /**
-     * Reload plugin
-     */
     public void reload() {
         reloadConfig();
         gearManager.reload();
     }
 
-    /**
-     * Colorize text with legacy color codes and MiniMessage
-     */
     public Component colorize(String text) {
         if (text == null || text.isEmpty()) {
             return Component.empty();
         }
 
-        // First convert legacy color codes to section symbols
         String legacyText = text.replace('&', '§');
 
-        // Check if text contains MiniMessage tags
         if (text.contains("<") && text.contains(">")) {
             return miniMessage.deserialize(text);
         }
@@ -114,9 +89,6 @@ public class InvisibleGear extends JavaPlugin {
         return LegacyComponentSerializer.legacySection().deserialize(legacyText);
     }
 
-    /**
-     * Get a message from config with prefix
-     */
     public Component getMessage(String key, String... replacements) {
         String prefix = getConfig().getString("messages.prefix", "&8[&bInvisibleGear&8] &7");
         String message = getConfig().getString("messages." + key, key);
@@ -128,9 +100,6 @@ public class InvisibleGear extends JavaPlugin {
         return colorize(prefix + message);
     }
 
-    /**
-     * Get a raw message without prefix
-     */
     public Component getRawMessage(String key, String... replacements) {
         String message = getConfig().getString("messages." + key, key);
 
