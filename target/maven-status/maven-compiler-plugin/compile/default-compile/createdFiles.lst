@@ -1,0 +1,8 @@
+com\github\tejaslamba2006\invisiblegear\listeners\GearListener.class
+com\github\tejaslamba2006\invisiblegear\managers\GearManager.class
+com\github\tejaslamba2006\invisiblegear\InvisibleGear.class
+com\github\tejaslamba2006\invisiblegear\utils\PluginAdvertiser$PluginAdvertiserListener.class
+com\github\tejaslamba2006\invisiblegear\managers\DataManager.class
+com\github\tejaslamba2006\invisiblegear\commands\VanishGearCommand.class
+com\github\tejaslamba2006\invisiblegear\utils\PluginAdvertiser.class
+com\github\tejaslamba2006\invisiblegear\commands\InvisibleGearCommand.class
