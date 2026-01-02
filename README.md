@@ -50,7 +50,7 @@ The plugin sends fake equipment data to other players. Your actual gear stays ex
 
 ## Support
 
-Discord: https://discord.gg/7fQPG4Grwt
+Discord: <https://discord.gg/7fQPG4Grwt>
 
 ## Requirements
 

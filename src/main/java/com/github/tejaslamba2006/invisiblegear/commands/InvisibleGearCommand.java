@@ -17,13 +17,13 @@ import java.util.stream.Collectors;
  * Main command handler for InvisibleGear
  */
 public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
-    
+
     private final InvisibleGear plugin;
-    
+
     public InvisibleGearCommand(InvisibleGear plugin) {
         this.plugin = plugin;
     }
-    
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
@@ -35,9 +35,9 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
             }
             return true;
         }
-        
+
         String subCommand = args[0].toLowerCase();
-        
+
         switch (subCommand) {
             case "toggle" -> {
                 if (sender instanceof Player player) {
@@ -75,31 +75,31 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
             case "help" -> sendHelp(sender);
             default -> sendHelp(sender);
         }
-        
+
         return true;
     }
-    
+
     /**
      * Toggle gear visibility
      */
     private void handleToggle(Player sender, String targetName) {
         Player target = sender;
-        
+
         if (targetName != null) {
             if (!sender.hasPermission("invisiblegear.others")) {
                 sender.sendMessage(plugin.getMessage("no-permission"));
                 return;
             }
-            
+
             target = Bukkit.getPlayer(targetName);
             if (target == null) {
                 sender.sendMessage(plugin.getMessage("player-not-found"));
                 return;
             }
         }
-        
+
         boolean nowHidden = plugin.getGearManager().toggleGear(target);
-        
+
         // Notify if toggling for another player
         if (!target.equals(sender)) {
             if (nowHidden) {
@@ -111,26 +111,26 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
             }
         }
     }
-    
+
     /**
      * Hide gear
      */
     private void handleHide(Player sender, String targetName) {
         Player target = sender;
-        
+
         if (targetName != null) {
             if (!sender.hasPermission("invisiblegear.others")) {
                 sender.sendMessage(plugin.getMessage("no-permission"));
                 return;
             }
-            
+
             target = Bukkit.getPlayer(targetName);
             if (target == null) {
                 sender.sendMessage(plugin.getMessage("player-not-found"));
                 return;
             }
         }
-        
+
         if (plugin.getGearManager().isGearHidden(target)) {
             if (target.equals(sender)) {
                 sender.sendMessage(plugin.getMessage("already-hidden"));
@@ -139,34 +139,34 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
             }
             return;
         }
-        
+
         plugin.getGearManager().hideGear(target);
-        
+
         if (!target.equals(sender)) {
             sender.sendMessage(plugin.getMessage("target-gear-hidden", "{player}", target.getName()));
             target.sendMessage(plugin.getMessage("your-gear-hidden-by", "{player}", sender.getName()));
         }
     }
-    
+
     /**
      * Show gear
      */
     private void handleShow(Player sender, String targetName) {
         Player target = sender;
-        
+
         if (targetName != null) {
             if (!sender.hasPermission("invisiblegear.others")) {
                 sender.sendMessage(plugin.getMessage("no-permission"));
                 return;
             }
-            
+
             target = Bukkit.getPlayer(targetName);
             if (target == null) {
                 sender.sendMessage(plugin.getMessage("player-not-found"));
                 return;
             }
         }
-        
+
         if (!plugin.getGearManager().isGearHidden(target)) {
             if (target.equals(sender)) {
                 sender.sendMessage(plugin.getMessage("already-shown"));
@@ -175,21 +175,21 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
             }
             return;
         }
-        
+
         plugin.getGearManager().showGear(target);
-        
+
         if (!target.equals(sender)) {
             sender.sendMessage(plugin.getMessage("target-gear-shown", "{player}", target.getName()));
             target.sendMessage(plugin.getMessage("your-gear-shown-by", "{player}", sender.getName()));
         }
     }
-    
+
     /**
      * Show status
      */
     private void handleStatus(Player sender, String targetName) {
         Player target = sender;
-        
+
         if (targetName != null) {
             target = Bukkit.getPlayer(targetName);
             if (target == null) {
@@ -197,9 +197,9 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
                 return;
             }
         }
-        
+
         boolean hidden = plugin.getGearManager().isGearHidden(target);
-        
+
         if (target.equals(sender)) {
             sender.sendMessage(plugin.getMessage(hidden ? "status-hidden" : "status-shown"));
         } else {
@@ -207,7 +207,7 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
             sender.sendMessage(plugin.colorize("&7" + target.getName() + "'s gear: " + status));
         }
     }
-    
+
     /**
      * Reload configuration
      */
@@ -216,11 +216,11 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
             sender.sendMessage(plugin.getMessage("no-permission"));
             return;
         }
-        
+
         plugin.reload();
         sender.sendMessage(plugin.getMessage("reload"));
     }
-    
+
     /**
      * Send help message
      */
@@ -234,16 +234,16 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
         sender.sendMessage(plugin.colorize("&b/ig reload &8- &7Reload configuration"));
         sender.sendMessage(plugin.colorize("&8&m----------------------------------------"));
     }
-    
+
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
         List<String> completions = new ArrayList<>();
-        
+
         if (args.length == 1) {
             completions = Arrays.asList("toggle", "hide", "show", "status", "reload", "help");
             return filter(completions, args[0]);
         }
-        
+
         if (args.length == 2) {
             switch (args[0].toLowerCase()) {
                 case "toggle", "hide", "show", "status" -> {
@@ -253,19 +253,19 @@ public class InvisibleGearCommand implements CommandExecutor, TabCompleter {
                 }
             }
         }
-        
+
         return completions;
     }
-    
+
     private List<String> getOnlinePlayerNames() {
         return Bukkit.getOnlinePlayers().stream()
-            .map(Player::getName)
-            .collect(Collectors.toList());
+                .map(Player::getName)
+                .collect(Collectors.toList());
     }
-    
+
     private List<String> filter(List<String> list, String prefix) {
         return list.stream()
-            .filter(s -> s.toLowerCase().startsWith(prefix.toLowerCase()))
-            .collect(Collectors.toList());
+                .filter(s -> s.toLowerCase().startsWith(prefix.toLowerCase()))
+                .collect(Collectors.toList());
     }
 }

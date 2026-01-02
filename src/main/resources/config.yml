@@ -9,13 +9,13 @@
 hide:
   # Hide armor (helmet, chestplate, leggings, boots)
   armor: true
-  
+
   # Hide held items (main hand)
   main-hand: true
-  
+
   # Hide off-hand items (shields, totems, etc.)
   off-hand: true
-  
+
   # Hide elytra
   elytra: true
 
@@ -25,13 +25,13 @@ hide:
 persistence:
   # Save invisible gear state when player leaves
   save-on-quit: true
-  
+
   # Restore invisible gear state when player joins
   restore-on-join: true
-  
+
   # Keep invisible gear after death
   keep-on-death: false
-  
+
   # Data storage method: FILE or MEMORY
   # FILE - Saves to invisiblegear_data.yml (persists across restarts)
   # MEMORY - Only keeps data while server is running
@@ -47,7 +47,7 @@ visual:
     # Particle type: SMOKE, CLOUD, SPELL, ENCHANT, END_ROD
     type: CLOUD
     count: 30
-    
+
   # Play sound when toggling
   sounds:
     enabled: true
@@ -68,7 +68,7 @@ update:
   # Lower = more responsive but more server load
   # Set to 0 to only update on equipment change events
   refresh-interval: 10
-  
+
   # Maximum distance at which gear hiding is applied
   # Players further than this will see your gear (performance optimization)
   # Set to 0 for unlimited
@@ -81,7 +81,7 @@ worlds:
   # Enable/disable per world
   # If a world is not listed, it uses 'default' value
   default: true
-  
+
   # Specific world overrides (uncomment to use)
   # world: true
   # world_nether: true
@@ -103,7 +103,7 @@ messages:
   reload: "&aConfiguration reloaded!"
   world-disabled: "&cInvisible gear is disabled in this world."
   cooldown: "&cPlease wait {time} seconds before toggling again."
-  
+
   # Messages for toggling other players
   target-gear-hidden: "&a{player}'s gear is now hidden."
   target-gear-shown: "&e{player}'s gear is now visible."
@@ -116,10 +116,10 @@ messages:
 cooldown:
   # Enable toggle cooldown
   enabled: false
-  
+
   # Cooldown in seconds
   duration: 5
-  
+
   # Bypass permission: invisiblegear.cooldown.bypass
 
 # ===========================================

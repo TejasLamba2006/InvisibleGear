@@ -5,6 +5,7 @@ Hide your armor from other players. You still get the protection, they just can'
 ## Why?
 
 Sometimes you want to look like you're unarmored when you're actually in full netherite. Good for:
+
 - Surprise PvP
 - Roleplay servers where you want to look a certain way
 - Just preferring the unarmored look
@@ -37,6 +38,6 @@ Drop the jar in your plugins folder, restart. That's it. Give players the `invis
 
 ## Support
 
-https://discord.gg/7fQPG4Grwt
+<https://discord.gg/7fQPG4Grwt>
 
 Works with Minecraft 1.21+ on Paper.
