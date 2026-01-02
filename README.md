@@ -1,171 +1,63 @@
 # InvisibleGear
 
-Hide your armor and weapons from other players for the ultimate stealth experience! Perfect for PvP servers, role-playing, or just surprising your friends.
+Hide your armor and held items from other players while still getting the protection.
 
-## ✨ Features
+## About
 
-### 🔒 Complete Gear Hiding
-- **Hide Armor** - Helmet, chestplate, leggings, boots
-- **Hide Weapons** - Main hand items
-- **Hide Off-hand** - Shields, totems, maps
-- **Hide Elytra** - Complete stealth in the air
+This plugin lets players hide their equipped armor and held items. You still get all the protection and effects, but other players see you without armor. Useful for PvP servers, roleplay, or anyone who wants a cleaner look.
 
-### ⚡ Native Implementation
-- **No Dependencies** - Works without ProtocolLib!
-- Uses Paper's native `sendEquipmentChange` API
-- Efficient and lightweight
-- Compatible with 1.21+
+## Features
 
-### 💾 Persistence Options
-- Save state on quit/join
-- Optional keep on death
-- File or memory storage
-- Per-world enable/disable
+- Hide helmet, chestplate, leggings, boots
+- Hide main hand and off-hand items
+- Hide elytra
+- Persists through relogs
+- Per-player toggle
+- No ProtocolLib required (uses native Paper API)
+- Configurable per slot
 
-### 🎨 Visual Feedback
-- Customizable particles when toggling
-- Configurable sounds
-- Status messages
-- Action bar feedback
+## Commands
 
-### ⚙️ Highly Configurable
-- Choose what to hide (armor, weapons, off-hand)
-- Cooldown system
-- Max distance optimization
-- Custom messages
+| Command | Description |
+|---------|-------------|
+| `/vanishgear` | Toggle all gear visibility |
+| `/vanishgear <slot>` | Toggle specific slot |
+| `/invisiblegear reload` | Reload config |
+| `/invisiblegear status` | Show current status |
 
-## 📥 Installation
+Slots: helmet, chestplate, leggings, boots, mainhand, offhand
 
-1. Download `InvisibleGear.jar`
-2. Place in your `plugins` folder
-3. Restart your server
-4. Done! No other plugins required!
+## How It Works
 
-## 🎯 Quick Start
+When you hide your gear, other players see you without that equipment. On your screen, everything looks normal. You keep all protection, enchantments, and effects.
 
-```
-/ig           - Toggle your gear visibility
-/ig hide      - Hide your gear
-/ig show      - Show your gear
-/ig status    - Check your current status
-```
+The plugin sends fake equipment data to other players. Your actual gear stays exactly the same.
 
-## 📋 Commands
+## Permissions
 
-| Command | Description | Permission |
-|---------|-------------|------------|
-| `/ig` or `/ig toggle` | Toggle your gear visibility | `invisiblegear.use` |
-| `/ig hide [player]` | Hide gear | `invisiblegear.use` |
-| `/ig show [player]` | Show gear | `invisiblegear.use` |
-| `/ig status [player]` | Check gear status | `invisiblegear.use` |
-| `/ig reload` | Reload configuration | `invisiblegear.admin` |
-| `/vg` | Quick toggle command | `invisiblegear.use` |
+| Permission | Description |
+|------------|-------------|
+| `invisiblegear.use` | Use /vanishgear command |
+| `invisiblegear.admin` | Admin commands |
+| `invisiblegear.see` | See hidden gear on others |
 
-**Aliases:** `/ig`, `/hidearmor`, `/hidegear`, `/stealth`
+## Configuration
 
-## 🔑 Permissions
+- Choose which slots can be hidden
+- Set default visibility state
+- Customize messages
+- Enable/disable persistence
 
-| Permission | Description | Default |
-|------------|-------------|---------|
-| `invisiblegear.use` | Toggle your own gear visibility | Everyone |
-| `invisiblegear.others` | Toggle gear for other players | OP |
-| `invisiblegear.always` | Keep gear hidden after death/relog | false |
-| `invisiblegear.admin` | Admin commands (reload) | OP |
-| `invisiblegear.bypass` | Always see other players' gear | false |
-| `invisiblegear.cooldown.bypass` | Bypass toggle cooldown | false |
+## Support
 
-## ⚙️ Configuration
+Discord: https://discord.gg/7fQPG4Grwt
 
-### What to Hide
-```yaml
-hide:
-  armor: true        # Helmet, chestplate, leggings, boots
-  main-hand: true    # Held items
-  off-hand: true     # Shields, totems, etc.
-  elytra: true       # Wings
-```
+## Requirements
 
-### Persistence
-```yaml
-persistence:
-  save-on-quit: true      # Remember state
-  restore-on-join: true   # Restore on login
-  keep-on-death: false    # Keep hidden after death
-  storage: FILE           # FILE or MEMORY
-```
+- Minecraft 1.21+
+- Paper (required for native equipment API)
+- Java 21+
 
-### Visual Effects
-```yaml
-visual:
-  particles:
-    enabled: true
-    type: CLOUD
-    count: 30
-  sounds:
-    enabled: true
-    hide-sound: ENTITY_ENDERMAN_TELEPORT
-    show-sound: ITEM_ARMOR_EQUIP_LEATHER
-```
+## License
 
-### Performance
-```yaml
-update:
-  refresh-interval: 10   # Ticks between updates
-  max-distance: 0        # Max distance (0 = unlimited)
-```
-
-### World Settings
-```yaml
-worlds:
-  default: true
-  # world_pvp: true
-  # creative_world: false
-```
-
-## 🎮 Use Cases
-
-### PvP Servers
-- Hide your armor to trick enemies
-- Appear weaker than you are
-- Surprise attacks
-
-### Role-Playing
-- Become a "civilian" without visible gear
-- Stealth characters
-- Disguise gameplay
-
-### Mini-Games
-- Hide-and-seek enhancement
-- Manhunt stealth mode
-- Custom game modes
-
-### Content Creation
-- Clean footage without armor clutter
-- Dramatic reveals
-- Cinematic shots
-
-## 🔌 Technical Details
-
-This plugin uses Paper's native `Player#sendEquipmentChange()` method to show fake empty equipment to other players. This approach:
-
-- ✅ Works without ProtocolLib
-- ✅ Is server-side only
-- ✅ Doesn't modify actual inventory
-- ✅ Updates automatically on equipment change
-
-**Limitations:**
-- Players with `invisiblegear.bypass` will always see real gear
-- Very briefly visible during chunk loading (fixed by refresh task)
-
-## 🤝 Support
-
-- **Discord:** [Join our Discord](https://discord.gg/7fQPG4Grwt)
-- **Issues:** Report bugs on GitHub
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Made with ❤️ by TejasLamba2006
+MIT License

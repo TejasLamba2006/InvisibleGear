@@ -1,68 +1,42 @@
 # InvisibleGear
 
-## Become a Ghost! 👻
+Hide your armor from other players. You still get the protection, they just can't see it.
 
-Ever wanted to hide your diamond armor from enemies in PvP? Or appear as a harmless player while actually being fully geared? **InvisibleGear** lets you hide your equipment from other players!
+## Why?
 
-### 🎭 What Does It Do?
+Sometimes you want to look like you're unarmored when you're actually in full netherite. Good for:
+- Surprise PvP
+- Roleplay servers where you want to look a certain way
+- Just preferring the unarmored look
+- Trolling your friends
 
-With a simple command, your armor, weapons, and held items become invisible to other players. You still have all your gear and protection - others just can't see it!
+## What it hides
 
-### ✨ Perfect For
+- All armor pieces (helmet, chest, legs, boots)
+- Main hand item
+- Off hand item
+- Elytra
 
-**🗡️ PvP Servers**
-- Trick enemies into thinking you're unarmed
-- Hide your netherite armor
-- Surprise attacks from "defenseless" players
+Toggle each slot individually or all at once.
 
-**🎭 Roleplay**
-- Play as a civilian without visible gear
-- Stealth character builds
-- Undercover operations
+## How to use
 
-**🎮 Mini-Games**
-- Enhanced hide and seek
-- Manhunt stealth mode
-- Custom game modes
+Type `/vanishgear` to hide everything. Use `/vanishgear helmet` to hide just the helmet. Same command again to show it.
 
-**📹 Content Creation**
-- Clean screenshots without armor clutter
-- Dramatic gear reveals
-- Cinematic moments
+On your screen, nothing changes. Other players see you without that gear. You keep all the protection.
 
-### ⚡ Key Features
+## Setup
 
-- **One Command Toggle** - Just `/ig` to hide/show
-- **No Dependencies** - Works out of the box!
-- **Remembers Your Choice** - Stays hidden even after relog
-- **Cool Effects** - Particles and sounds when toggling
-- **Per-World Support** - Enable only where you want
+Drop the jar in your plugins folder, restart. That's it. Give players the `invisiblegear.use` permission if needed (defaults to everyone).
 
-### 🚀 Getting Started
+## Good to know
 
-1. Drop the plugin in your server
-2. Type `/ig` to toggle your gear visibility
-3. That's it! 🎉
+- Gear stays hidden even after you log out and back in
+- Admins with `invisiblegear.see` can still see hidden gear
+- Uses Paper's built-in system, no extra plugins needed
 
-### 📋 Simple Commands
+## Support
 
-- `/ig` - Toggle your gear on/off
-- `/ig status` - Check if your gear is hidden
-- `/vg` - Quick toggle alias
+https://discord.gg/7fQPG4Grwt
 
-### 💡 How It Works
-
-Your gear is only hidden *visually* from other players. You still have:
-- Full armor protection
-- Your actual weapons
-- All item enchantments working
-
-It's purely cosmetic hiding - perfect for surprising your enemies!
-
-### 💬 Need Help?
-
-Join our [Discord community](https://discord.gg/7fQPG4Grwt) for support and suggestions!
-
----
-
-**Note:** This plugin requires Paper 1.21+ and uses native APIs - no additional dependencies needed!
+Works with Minecraft 1.21+ on Paper.
